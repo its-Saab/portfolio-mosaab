@@ -3,13 +3,26 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "node server.js",
     "build": "next build",
-    "start": "next start"
+    "start": "cross-env NODE_ENV=production node server.js"
   },
   "dependencies": {
+    "@auth0/nextjs-auth0": "^0.11.0",
+    "axios": "^0.21.1",
+    "bootstrap": "^4.5.3",
+    "cross-env": "^7.0.3",
+    "dotenv-webpack": "^1.7.0",
+    "express": "^4.17.1",
     "next": "10.0.4",
     "react": "17.0.1",
-    "react-dom": "17.0.1"
+    "react-dom": "17.0.1",
+    "react-router-dom": "^5.2.0",
+    "react-typed": "^1.2.0",
+    "react-typing": "^1.0.0",
+    "react-typing-effect": "^2.0.4",
+    "reactstrap": "^8.8.0",
+    "sass": "^1.30.0",
+    "swr": "^0.3.11"
   }
 }
