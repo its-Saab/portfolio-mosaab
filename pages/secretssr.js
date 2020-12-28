@@ -20,8 +20,10 @@ const SecretSSR= ({user}) => {
     )
   }
 
+  export const getServerSideProps = withAuth('admin');
+export default SecretSSR
 
-
+  //another way to serverSideProps would be :
   // export const getServerSideProps = async ({req,res}) => {
   //   const user = await authorizedUser(req,res)
   //   return {
@@ -29,5 +31,3 @@ const SecretSSR= ({user}) => {
   //   }
   // }
 
-  export const getServerSideProps = withAuth('admin');
-export default SecretSSR

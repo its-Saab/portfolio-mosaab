@@ -15,8 +15,8 @@ const Cv = () => {
     </Head>
 
     <BaseLayout
-    user={data}
-    loading={loading}>
+     user={data}
+     loading={loading}>
         <BasePage>
             <h1>I'm Cv page</h1>
         </BasePage>

@@ -10,14 +10,14 @@ const Secret= ({user,loading}) => {
     return(
         <>
          <Head>
-      <title>Secret</title>
-      <link rel="icon" href="/favicon.ico" />
+            <title>Secret</title>
+            <link rel="icon" href="/favicon.ico" />
          </Head>
 
 
          <BaseLayout
-         user={user}
-         loading={loading}
+          user={user}
+          loading={loading}
          >
             <BasePage>
                 <h1>I'm Secret page - Hello {user.name}</h1>

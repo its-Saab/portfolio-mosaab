@@ -14,8 +14,9 @@ const Blogs = () => {
       <link rel="icon" href="/favicon.ico" />
     </Head>
 
-    <BaseLayout user={data}
-        loading={loading}>
+    <BaseLayout
+      user={data}
+      loading={loading}>
         <BasePage >
             <h1>I'm Blog page</h1>
         </BasePage>

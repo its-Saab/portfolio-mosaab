@@ -6,7 +6,7 @@ import {useGetPosts} from '@/pages/actions'
 import {useGetUser} from '@/pages/actions/user'
 
 const Portfolios = () => {
-//destructrise the return from the function useGetPosts/useSwr that receives the post from the api
+//destructrize the return from the function useGetPosts/useSwr that receives the post from the api
     const { data,error, loading } = useGetPosts()
     const {data: dataU, loading:loadingU} = useGetUser()
        function renderPosts(posts){
@@ -23,30 +23,30 @@ const Portfolios = () => {
             return(
                 <>
             <Head>
-            <title>Blogs</title>
-            <link rel="icon" href="/favicon.ico" />
+                <title>Blogs</title>
+                <link rel="icon" href="/favicon.ico" />
             </Head>
 
             <BaseLayout
-            user={dataU}
-            loading={loadingU}
+             user={dataU}
+             loading={loadingU}
             >
-            <BasePage>
-                <h1>I'm Portfolios page</h1>
-                {loading &&
-                <p>loading...</p>
+                <BasePage>
+                    <h1>I'm Portfolios page</h1>
+                    {loading &&
+                    <p>loading...</p>
 
-                }
-                { data &&
-                <ul>
-                    {renderPosts(data)}
-                </ul>
-                }
-                { error &&
-                <div className='alert alert-danger'>{error.message}</div>
+                    }
+                    { data &&
+                    <ul>
+                        {renderPosts(data)}
+                    </ul>
+                    }
+                    { error &&
+                    <div className='alert alert-danger'>{error.message}</div>
 
-                }
-            </BasePage>
+                    }
+                </BasePage>
             </BaseLayout>
                 </>
             )

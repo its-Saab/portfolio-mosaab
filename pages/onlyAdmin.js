@@ -7,20 +7,20 @@ import withAuth from '@/hoc/withAuth'
 const OnlyAdmin= ({user,loading}) => {
     return(
         <>
-         <Head>
-      <title>Secret</title>
-      <link rel="icon" href="/favicon.ico" />
-         </Head>
+            <Head>
+                <title>Secret</title>
+                <link rel="icon" href="/favicon.ico" />
+            </Head>
 
 
-         <BaseLayout
-         user={user}
-         loading={loading}
-         >
-            <BasePage>
-                <h1>I'm Admin page - Hello {user.name}</h1>
-            </BasePage>
-         </BaseLayout>
+            <BaseLayout
+             user={user}
+             loading={loading}
+            >
+                <BasePage>
+                    <h1>I'm Admin page - Hello {user.name}</h1>
+                </BasePage>
+            </BaseLayout>
 
         </>
     )

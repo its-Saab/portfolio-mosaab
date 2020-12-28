@@ -17,9 +17,10 @@ export const useGetPosts = () => {
   return {data, error, loading: !data && !error, ...rest}
 }
 
-
 //since useSWR doesn't return a loading status, this is a way to manually define "loading":
 //loading: !data && !error
+
+
 
 
 //this function is to fetch data dynamically to portfolio.[id]
