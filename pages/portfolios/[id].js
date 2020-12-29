@@ -1,40 +1,20 @@
 import React from 'react'
 import BaseLayout from '@/components/layouts/BaseLayout'
 import {withRouter} from 'next/router'
-import axios from 'axios'
 import BasePage from '@/components/BasePage'
-import {useGetPostsById} from '@/pages/actions'
-import {useRouter} from 'next/router'
 import {useGetUser} from '@/pages/actions/user'
+import PortfolioApi from '../../lib/api/portfolios'
 
-const Portfolio = () => {
-  const router = useRouter()
- const {data: post, error, loading} = useGetPostsById( router.query.id)
-//useSWR is smart enough to make multiple requests in case the id was undefined
-
-
-const {data: dataU,loading:loadingU} = useGetUser()
+const Portfolio = ({portfolio}) => {
+  const {data: dataU,loading:loadingU} = useGetUser()
   return(
     <BaseLayout
     user={dataU}
     loading={loadingU}
     >
-    <BasePage>
-      <h1>I am Portfolio Page</h1>
-      {loading &&
-      <p>loading...</p>
-      }
-      {post &&
-      <>
-      <h1> Title: {post.title}</h1>
-      <p>{post.body}</p>
-      </>
-      }
-      {error &&
-      <div className="alert alert-danger">
-        {error.message}
-      </div>
-
+    <BasePage header="Portfolio Detail:">
+      {
+        JSON.stringify(portfolio)
       }
     </BasePage>
     </BaseLayout>
@@ -42,5 +22,32 @@ const {data: dataU,loading:loadingU} = useGetUser()
 }
 
 
+//this function is executed build-time
+export async function getStaticPaths(){
+  const json = await new PortfolioApi().getAll()
+  const portfolios = json.data
+
+  //Gets the paths we want to pre-render based on portfolios id
+  const paths = portfolios.map(portfolio => {
+    return {
+      params: {id: portfolio._id}
+    }
+  })
+  // fallback: false means that "not found pages" will be resolved
+  //into 404 pages
+  return {paths, fallback: false}
+}
+
+export async function getStaticProps({params}){
+ const json = await new PortfolioApi().getById(params.id)
+ const portfolio = json.data
+ return {props: {portfolio}}
+}
 
 export default withRouter(Portfolio)
+
+// export async function getServerSideProps({query}){
+//   const json = await new PortfolioApi().getById(query.id)
+//   const portfolio = json.data
+//   return {props: {portfolio}}
+// }
