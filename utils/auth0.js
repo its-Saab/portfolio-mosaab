@@ -13,10 +13,21 @@ const auth0 = initAuth0({
   session: {
     // The secret used to encrypt the cookie.
     cookieSecret: process.env.AUTH0_COOKIE_SECRET,
+    storeAccessToken: true
   }
 });
 export default auth0
 //inorder for this naming to work you need to run "npm install --save dotenv-webpack@1.7.0"
+
+
+
+
+export const isAuthorized = (user, role) => {
+  return (user && user[process.env.AUTH0_NAMESPACE + '/roles'].includes(role));
+}
+
+
+
 
 
 //this functino is for SSR for authonticating the user
@@ -35,14 +46,19 @@ export const authorizedUser = async (req,res) => {
 
 }
 
-export const withAuth = (role) => async ({req,res}) => {
-  const session = await auth0.getSession(req)
-  if(!session || !session.user ||  (role && Object.values(session.user).flat().indexOf(role) < 0)){
+
+
+export const withAuth = getData => role => async ({req, res}) => {
+  const session = await auth0.getSession(req);
+  if (!session || !session.user || (role && !isAuthorized(session.user, role))) {
     res.writeHead(302, {
       Location: '/api/v1/login'
-    })
-    res.end()
-    return {props: {}}
+    });
+    res.end();
+    return {props: {}};
   }
-  return {props: {user: session.user}}
+
+  const data = getData ? await getData({req, res}, session.user) : {};
+
+  return {props: {user: session.user, ...data}}
 }
