@@ -14,10 +14,8 @@ const withAuth = Component => role => {
     } else {
       //checking using the NAMESPACE if it includes an admin role / hiding the link
       if (role && !isAuthorized(data,role)){
-
         return <Redirect ssr to='/api/v1/login' />
       }
-
       return <Component user={data} loading={loading} {...props}/>
     }
   }
