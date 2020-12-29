@@ -12,25 +12,20 @@ export const fetcher = (url) =>
   }
   })
 
-export const useGetPosts = () => {
-  const {data,error,...rest} = useSWR('/api/v1/posts',fetcher)
-  return {data, error, loading: !data && !error, ...rest}
-}
 
 
+  //no longer needed since portfolio data is being fitched from MongoDB
+// export const useGetPosts = () => {
+//   const {data,error,...rest} = useSWR('/api/v1/posts',fetcher)
+//   return {data, error, loading: !data && !error, ...rest}
+// }
 //since useSWR doesn't return a loading status, this is a way to manually define "loading":
 //loading: !data && !error
-
-
 //this function is to fetch data dynamically to portfolio.[id]
-export const useGetPostsById = (id) => {
-  const {data,error,...rest} = useSWR(id ?`/api/v1/posts/${id}`: null,fetcher)
-  return {data, error, loading: !data && !error, ...rest}
-}
-
-
-
-
+// export const useGetPostsById = (id) => {
+//   const {data,error,...rest} = useSWR(id ?`/api/v1/posts/${id}`: null,fetcher)
+//   return {data, error, loading: !data && !error, ...rest}
+// }
 
 // custom server call
 //this function receives the post from the api.
