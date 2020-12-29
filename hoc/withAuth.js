@@ -1,6 +1,6 @@
 import {useGetUser} from '@/pages/actions/user'
 import Redirect from '@/components/shared/Redirect'
-
+import {isAuthorized} from '@/utils/auth0'
 
 const withAuth = Component => role => {
   return props => {
@@ -13,9 +13,11 @@ const withAuth = Component => role => {
       return <Redirect ssr to='/api/v1/login' />
     } else {
       //checking using the NAMESPACE if it includes an admin role / hiding the link
-      if (data && !data['https://portfolio-mosaab.com/roles'].includes(role)){
+      if (role && !isAuthorized(data,role)){
+
         return <Redirect ssr to='/api/v1/login' />
       }
+
       return <Component user={data} loading={loading} {...props}/>
     }
   }
