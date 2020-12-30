@@ -13,7 +13,6 @@ const auth0 = initAuth0({
   session: {
     // The secret used to encrypt the cookie.
     cookieSecret: process.env.AUTH0_COOKIE_SECRET,
-    storeAccessToken: true
   }
 });
 export default auth0
