@@ -1,9 +1,8 @@
 import React from 'react'
 import BaseLayout from '@/components/layouts/BaseLayout'
-import {withRouter} from 'next/router'
 import BasePage from '@/components/BasePage'
 import {useGetUser} from '@/pages/actions/user'
-import PortfolioApi from '../../lib/api/portfolios'
+import PortfolioApi from '@/lib/api/portfolios'
 
 const Portfolio = ({portfolio}) => {
   const {data: dataU,loading:loadingU} = useGetUser()
@@ -44,7 +43,7 @@ export async function getStaticProps({params}){
  return {props: {portfolio}}
 }
 
-export default withRouter(Portfolio)
+export default Portfolio
 
 // export async function getServerSideProps({query}){
 //   const json = await new PortfolioApi().getById(query.id)
