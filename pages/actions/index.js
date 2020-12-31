@@ -26,7 +26,7 @@ export const fetcher = (url) =>
       setReqState({error:null,data: json.data, loading:false})
 
     } catch(e){
-        const message = (e.respone && e.respone.message) || 'Ooops, something went wrong...'
+        const message = (e.response && e.response.data) || 'Ooops, something went wrong...'
         setReqState({error: message,data: null, loading:false})
 
       }
