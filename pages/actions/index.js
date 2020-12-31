@@ -1,5 +1,4 @@
-import useSWR from 'swr'
-
+import {useState} from 'react'
 
 //this fetcher function is required in the args of useSwr
 export const fetcher = (url) =>
@@ -11,6 +10,30 @@ export const fetcher = (url) =>
     return result
   }
   })
+
+  //this function handle the api call using useState hook and returns the error in details.
+  // it maintains error,data,loading states
+  export function useApiHandler(apiCall){
+    const [reqState, setReqState] = useState({
+      error: null,
+      data: null,
+      loading: false
+    })
+    const handler = async (...data) => {
+    setReqState({error:null,data:null,loading:true});
+    try{
+      const json = await apiCall(...data)
+      setReqState({error:null,data: json.data, loading:false})
+
+    } catch(e){
+        const message = (e.respone && e.respone.message) || 'Ooops, something went wrong...'
+        setReqState({error: message,data: null, loading:false})
+
+      }
+    }
+    return [handler, {...reqState}]
+  }
+
 
 
 
