@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { useApiHandler, fetcher } from 'pages/actions'
+import { useApiHandler, fetcher } from 'actions'
 import useSWR from 'swr';
 
 

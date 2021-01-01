@@ -1,13 +1,13 @@
 import Head from 'next/head'
-import BaseLayout from '@/components/layouts/BaseLayout'
-import BasePage from '@/components/BasePage'
-import {useGetUser} from '@/pages/actions/user'
-import {useDeletePortfolio} from '@/pages/actions/portfolios'
-import PortfolioApi from '@/lib/api/portfolios'
-import PortfolioCard from '@/components/shared/PortfolioCard'
+import BaseLayout from 'components/layouts/BaseLayout'
+import BasePage from 'components/BasePage'
+import {useGetUser} from 'actions/user'
+import {useDeletePortfolio} from 'actions/portfolios'
+import PortfolioApi from 'lib/api/portfolios'
+import PortfolioCard from 'components/shared/PortfolioCard'
 import { Row, Col, Button} from 'reactstrap';
 import{useRouter} from 'next/router'
-import {isAuthorized} from '@/utils/auth0'
+import {isAuthorized} from 'utils/auth0'
 import {useState} from 'react'
 
 const Portfolios = ({portfolios: initialPortfolios}) => {

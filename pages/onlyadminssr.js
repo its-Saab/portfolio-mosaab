@@ -1,8 +1,8 @@
 import React from 'react'
 import Head from 'next/head'
-import BaseLayout from '@/components/layouts/BaseLayout'
-import BasePage from '@/components/BasePage'
-import {authorizedUser, withAuth} from '@/utils/auth0'
+import BaseLayout from 'components/layouts/BaseLayout'
+import BasePage from 'components/BasePage'
+import {authorizedUser, withAuth} from 'utils/auth0'
 const OnlyAdminSSR= ({user}) => {
     return(
         <>

@@ -1,8 +1,8 @@
 import React from 'react'
 import Head from 'next/head'
-import BaseLayout from '@/components/layouts/BaseLayout'
-import BasePage from '@/components/BasePage'
-import withAuth from '@/hoc/withAuth'
+import BaseLayout from 'components/layouts/BaseLayout'
+import BasePage from 'components/BasePage'
+import withAuth from 'hoc/withAuth'
 
 const OnlyAdmin= ({user,loading}) => {
     return(

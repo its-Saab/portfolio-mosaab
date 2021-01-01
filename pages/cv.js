@@ -1,8 +1,8 @@
 import React from 'react'
-import BaseLayout from '@/components/layouts/BaseLayout'
+import BaseLayout from 'components/layouts/BaseLayout'
 import Head from 'next/head'
-import BasePage from '@/components/BasePage'
-import {useGetUser} from '@/pages/actions/user'
+import BasePage from 'components/BasePage'
+import {useGetUser} from 'actions/user'
 
 
 const Cv = () => {

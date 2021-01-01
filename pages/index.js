@@ -1,10 +1,10 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import React from 'react'
-import BaseLayout from '@/components/layouts/BaseLayout'
+import BaseLayout from 'components/layouts/BaseLayout'
  import {Container, Row, Col} from 'reactstrap'
  import Typed from 'react-typed';
-import {useGetUser} from '@/pages/actions/user'
+import {useGetUser} from 'actions/user'
 
 
 const Index = () => {

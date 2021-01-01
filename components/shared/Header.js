@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
-import {isAuthorized} from '@/utils/auth0'
+import {isAuthorized} from 'utils/auth0'
 import {
   Collapse,
   Navbar,

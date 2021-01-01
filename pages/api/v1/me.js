@@ -1,4 +1,4 @@
-import auth0 from '@/utils/auth0'
+import auth0 from 'utils/auth0'
 
 //after authinticating a user it will fetch the user's profile to the endpoint mentioned 'api/v1/me'
 export default async function me(req, res) {
