@@ -1,7 +1,6 @@
 import axios from 'axios'
-import { useApiHandler } from '@/pages/actions'
+import { useApiHandler, fetcher } from 'pages/actions'
 import useSWR from 'swr';
-import { fetcher } from '@/pages/actions';
 
 
  const createPortfolio = data =>  axios.post('/api/v1/portfolios',data);
