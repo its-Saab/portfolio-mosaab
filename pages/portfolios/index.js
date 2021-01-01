@@ -8,9 +8,11 @@ import PortfolioCard from '@/components/shared/PortfolioCard'
 import { Row, Col, Button} from 'reactstrap';
 import{useRouter} from 'next/router'
 import {isAuthorized} from '@/utils/auth0'
+import {useState} from 'react'
 
-const Portfolios = ({portfolios}) => {
+const Portfolios = ({portfolios: initialPortfolios}) => {
     const router = useRouter()
+    const [portfolios, setPortfolios] = useState(initialPortfolios)
     const [deletePortfolio , {error,data}] = useDeletePortfolio()
 //destructrise the return from the function useGetPosts/useSwr that receives the post from the api
     const {data: dataU, loading:loadingU} = useGetUser()
@@ -20,6 +22,8 @@ const Portfolios = ({portfolios}) => {
         const isConfirm = confirm("Are you sure?")
         if (isConfirm){
             await deletePortfolio(portfolioID)
+            const newPortfolios = portfolios.filter(a => a._id !== portfolioID)
+            setPortfolios(newPortfolios)
         }
     }
             return(
