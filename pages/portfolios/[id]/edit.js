@@ -17,15 +17,26 @@ const PortfolioEdit = ({user}) => {
   //this function is to add the id from router.query.id to updatePortfolio
   const _updatePortfolio = async data => {
      await updatePortfolio(router.query.id, data)
-     toast.dark('Successfully updated!', {
-      position: "top-right",
-      autoClose: 2000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      });
+     toast.dark('Successfully updated!', {position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      })
+
+     //one way to do it:
+    //  updatePortfolio(router.query.id, data)
+    //  .then(() => toast.dark('Successfully updated!', {position: "top-right",autoClose: 2000, hideProgressBar: false, closeOnClick: true, pauseOnHover: true,
+    //   draggable: true,
+    //   progress: undefined,
+    //   }))
+    //   .catch(() =>toast.error('Ooops Something went wrong!', {position: "top-right",autoClose: 2000, hideProgressBar: false, closeOnClick: true, pauseOnHover: true,
+    //   draggable: true,
+    //   progress: undefined,
+    //   }) )
+
 
   }
   return(
@@ -38,6 +49,9 @@ const PortfolioEdit = ({user}) => {
               onSubmit={_updatePortfolio}
               initialData={initialData}
             />
+          }
+          { error &&
+            <div className="alert alert-danger mt-2">{error}</div>
           }
         </Col>
       </Row>
