@@ -7,15 +7,26 @@ import {useGetPortfolio} from '@/pages/actions/portfolios'
 import {Col, Row} from 'reactstrap'
 import PortfolioForm from '@/components/PortfolioForm'
 import { useUpdatePortfolio } from '@/pages/actions/portfolios'
+import { toast } from 'react-toastify';
 
 const PortfolioEdit = ({user}) => {
   const router = useRouter()
-  const [updatePortfolio, {data,error,loading}] = useUpdatePortfolio()
+  const [updatePortfolio, {error}] = useUpdatePortfolio()
   const {data: initialData} = useGetPortfolio(router.query.id)
 
   //this function is to add the id from router.query.id to updatePortfolio
-  const _updatePortfolio = data => {
-     updatePortfolio(router.query.id, data)
+  const _updatePortfolio = async data => {
+     await updatePortfolio(router.query.id, data)
+     toast.dark('Successfully updated!', {
+      position: "top-right",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      });
+
   }
   return(
     <BaseLayout user={user} loading={false}>

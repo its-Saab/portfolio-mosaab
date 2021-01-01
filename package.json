@@ -20,6 +20,7 @@
     "react-dom": "17.0.1",
     "react-hook-form": "^6.13.1",
     "react-router-dom": "^5.2.0",
+    "react-toastify": "^6.2.0",
     "react-typed": "^1.2.0",
     "react-typing": "^1.0.0",
     "react-typing-effect": "^2.0.4",
