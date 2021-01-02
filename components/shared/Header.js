@@ -92,7 +92,6 @@ return(
         light
         expand="md">
         <BsNavBrand />
-            <h1>{width}</h1>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
