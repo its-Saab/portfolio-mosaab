@@ -3,7 +3,7 @@ import BaseLayout from 'components/layouts/BaseLayout'
 import Head from 'next/head'
 import BasePage from 'components/BasePage'
 import {useGetUser} from 'actions/user'
-
+import {Row,Col} from 'reactstrap'
 
 const Cv = () => {
     const {data,loading} = useGetUser()
@@ -18,7 +18,12 @@ const Cv = () => {
     user={data}
     loading={loading}>
         <BasePage>
-            <h1>I'm Cv page</h1>
+        <Row>
+            <Col md={{size:8, offset:2}}>
+            <iframe style={{width:"100%", height: '800px'}} src="/Saab_CV.pdf"/>
+
+            </Col>
+        </Row>
         </BasePage>
     </BaseLayout>
         </>
