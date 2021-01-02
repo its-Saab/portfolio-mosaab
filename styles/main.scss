@@ -1,12 +1,10 @@
-@import 'shared/fonts';
-
-
 //components:
 @import 'components/header';
 
 //pages:
 @import'index';
 @import'portfolios';
+@import'portfolio-detail';
 @import'about';
 .customClassFromFile{
   color: blue;
@@ -23,6 +21,8 @@ html,body{
 .clickable{
   cursor: pointer;
 }
+
+
 .base-page{
   padding: 70px 0;
   color: rgb(17, 16, 16);
