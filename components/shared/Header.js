@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import {isAuthorized} from 'utils/auth0'
+import ReactResizeDetector from 'react-resize-detector';
+
 import {
   Collapse,
   Navbar,
@@ -12,7 +14,6 @@ import {
   DropdownMenu,
   DropdownItem
 } from 'reactstrap';
-
 
 const BsNavLink = props => {
     const {title, href, className=''} = props
@@ -84,12 +85,14 @@ const Header = ({user, loading, className}) => {
     const toggle = () => setIsOpen(!isOpen);
 
 return(
-    <div>
-        <Navbar className={`port-navbar port-default absolute ${className}`}
+    <ReactResizeDetector handleWidth >
+        {
+            ({width}) =>
+        <Navbar className={`port-navbar port-default absolute ${className} ${width<768 && isOpen? 'is-open': 'is-close'}`}
         light
         expand="md">
         <BsNavBrand />
-
+            <h1>{width}</h1>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
@@ -143,7 +146,8 @@ return(
           </Nav>
         </Collapse>
       </Navbar>
-    </div>
+        }
+    </ReactResizeDetector>
      )
 
 }
