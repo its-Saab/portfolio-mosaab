@@ -28,15 +28,13 @@ const Portfolios = ({portfolios: initialPortfolios}) => {
     }
             return(
                 <>
-            <Head>
-            <title>Blogs</title>
-            <link rel="icon" href="/favicon.ico" />
-            </Head>
+
             <BaseLayout
             user={dataU}
             loading={loadingU}
             >
             <BasePage
+            title="Portfolios"
             header= "Portfolios"
             className="portfolio-page">
                 <Row>

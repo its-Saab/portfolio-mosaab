@@ -1,9 +1,21 @@
 import {Container} from 'reactstrap'
+import Head from 'next/head'
 
 const BasePage = props => {
-const {className = '', children, header } = props
+const {
+  indexPage,
+  className = '',
+  children,
+  title="Portfolio-it's Saab",
+  header } = props
+
+  const pageType = indexPage? 'index-page' : 'base-page'
   return(
-    <div className={` base-page ${className}`}>
+    <div className={`${pageType}${className}`}>
+      <Head>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width"/>
+        <title>{title}</title>
+      </Head>
       <Container>
         {header &&
         <div className="page-header">
